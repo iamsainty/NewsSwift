@@ -32,8 +32,9 @@ const News =(props)=> {
     }, [])
 
     const fetchMoreData = async () => {
+        
+        let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page+1}&pageSize=${props.pageSize}`;
         setPage(page+1)
-        let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
         setLoading(true)
         let data = await fetch(url);
         let parseddata = await data.json();
@@ -53,19 +54,20 @@ const News =(props)=> {
         if (!articles) {
             return <div>No articles to display</div>;
         }
+        let mode=props.mode;
     
         return (
-            <div className='container my-5'>
-                <h2>News Hub - Top headlines</h2>
+            <div className='container my-5' >
+                <h2  style={{color: props.mode==='dark'?'white':'#191919', marginTop: '100px'}}>News Hub - Top headlines</h2>
                 {loading && <Spinner />}
                 <InfiniteScroll
                     dataLength={articles.length}
                     next={fetchMoreData}
                     hasMore={articles.length !== totalResults}
                     loader={<Spinner />}>
-                    <div className="row">
+                    <div className="row" >
                         {articles.map((element, index) => (
-                            <div className="col-md-3" key={`${element.url}-${index}`}>
+                            <div className="col-md-3" key={`${element.url}-${index}`}  style={{color: props.mode==='dark'?'white':'#232D3F'}}>
                                 <Newsitem
                                     title={element.title ? element.title.slice(0, 40) : ""}
                                     description={element.description ? element.description.slice(0, 75) : ""}
@@ -74,6 +76,7 @@ const News =(props)=> {
                                     author={element.author ? element.author : "Unknown"}
                                     date={element.publishedAt}
                                     source={element.source.name}
+                                    mode={mode}
                                 />
                             </div>
                         ))}
