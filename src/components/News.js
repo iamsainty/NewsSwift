@@ -89,7 +89,7 @@ const News =(props)=> {
 News.defaultProps = {
     country: 'in',
     pageSize: 8,
-    category: 'science',
+    category: 'general',
     apikey: process.env.REACT_APP_NEWSHUB
 }
 News.propTypes = {
