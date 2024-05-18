@@ -8,6 +8,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+// import BusinessNews from './components/BusinessNews';
 
 const App =()=> {
   const [mode, setmode] = useState('light');
@@ -36,7 +37,7 @@ const App =()=> {
           <Navbar mode={mode} togglemode={togglemode} />
           <Routes>
             <Route exact path="/" element={<News mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="science" pageSize={8} country='in' category='science' />} />
-            <Route exact path="/business" element={<News mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="business" pageSize={8} country='in' category='business' />} />
+            {/* <Route exact path="/business" element={<BusinessNews mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="business" pageSize={8} country='in' category='business' />} /> */}
             <Route exact path="/entertainment" element={<News mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="entertainment" pageSize={8} country='in' category='entertainment' />} />
             <Route exact path="/general" element={<News mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="general" pageSize={8} country='in' category='general' />} />
             <Route exact path="/health" element={<News mode={mode} togglemode={togglemode} setProgress={setProgress} apikey={apikey}  key="health" pageSize={8} country='in' category='health' />} />
