@@ -270,7 +270,7 @@ const News = (props) => {
 
     return (
         <div className='container my-5'>
-            <h2 style={{ color: props.mode === 'dark' ? 'white' : '#191919', marginTop: '100px' }}>News Hub - Top headlines</h2>
+            <h2 style={{ color: props.mode === 'dark' ? 'white' : '#191919', marginTop: '100px' }}>News Swift - Top headlines</h2>
             <div className="row">
                 {newsarticles[0].articles.map((element, index) => (
                     <div className="col-md-3" key={`${element.url}-${index}`} style={{ color: props.mode === 'dark' ? 'white' : '#232D3F' }}>
